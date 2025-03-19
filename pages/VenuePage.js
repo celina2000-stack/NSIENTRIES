@@ -76,7 +76,7 @@ class VenuePage {
     await this.page.getByRole('button', { name: '' }).click();
     await this.page.locator('#Venue_AffiliationCheckbox').uncheck();
     await this.page.getByRole('button', { name: ' Save' }).click();
-    await this.page.getByRole('row', { name: '+  Actions  test Bagmati' }).getByRole('button').click();
+    await this.page.getByRole('row', { name: '+  Actions  test ' }).getByRole('button').click();
     await this.page.getByRole('link', { name: ' Delete' }).click();
     await this.page.getByRole('button', { name: 'Yes' }).click();
   }
