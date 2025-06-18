@@ -12,13 +12,16 @@ test('Validating Living Support', async ({ page }) => {
     await loginPage.checkUser('admin');
     await page.waitForTimeout(5000);
     await venue.navigateTovenue();
+    await page.waitForTimeout(2000);
     await venue.createvenue();
     const modules = ['HR', 'Training'];
     await living.fillform('test',modules.length, modules);
     if (modules.includes('Training')) {
+        await page.waitForTimeout(2000);
         await living.checktraining('test')
     }
     if (modules.includes('CSSP')) {
+        await page.waitForTimeout(2000);
        await living.checkcssp('test')
  }
     await venue.navigateTovenue();

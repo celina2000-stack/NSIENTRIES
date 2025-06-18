@@ -25,16 +25,17 @@ class TrainingregPage {
     await this.create.click();
     await this.page.waitForTimeout(2000);
   }
-  async fillform(){
-    await this.page.getByLabel('Training Name', { exact: true }).selectOption('213');
-    await this.page.getByLabel('Trainng Type').selectOption('2606');
-    await this.page.getByLabel('Sponsor').selectOption('249');
-    await this.page.getByLabel('Status').selectOption('385');
+  async fillform(trainingname, type, version, sponsor, status, trainingsite, batchno, startdate, enddate){
+    await this.page.getByLabel('Training Name', { exact: true }).selectOption({label:trainingname});
+    await this.page.getByLabel('Trainng Type').selectOption({label: type});
+    await this.page.getByLabel('Version').selectOption({label: version});
+    await this.page.getByLabel('Sponsor').selectOption({label: sponsor});
+    await this.page.getByLabel('Status').selectOption({label: status});
     await this.page.getByRole('combobox', { name: 'Training Site' }).locator('span').nth(1).click();
-    await this.page.getByRole('option', { name: 'United Mission Hospital,' }).click();
-    await this.page.getByRole('spinbutton', { name: 'Batch Number' }).fill('8');
-    await this.page.getByRole('combobox', { name: 'Start Date' }).fill('3/8/2025');
-    await this.page.getByRole('combobox', { name: 'End Date' }).fill('3/9/2025');
+    await this.page.getByRole('option', { name: trainingsite }).click();
+    await this.page.getByRole('spinbutton', { name: 'Batch Number' }).fill(batchno);
+    await this.page.getByRole('combobox', { name: 'Start Date' }).fill(startdate);
+    await this.page.getByRole('combobox', { name: 'End Date' }).fill(enddate);
     await this.savebutton.click();
     await this.page.waitForTimeout(2000);
   }

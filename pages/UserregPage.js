@@ -23,21 +23,21 @@ class UserregPage {
   }
   async createUserreg() {
     await this.create.click();
-    await this.page.locator('#txtFirstName').fill('Celina');
+    await this.page.locator('#txtFirstName').fill('test');
     await this.page.getByRole('button', { name: ' Search' }).click();   
-    await this.page.getByRole('gridcell', { name: 'Celina' }).first().dblclick();
+    await this.page.getByRole('gridcell', { name: 'test' }).first().dblclick();
     await this.page.waitForTimeout(2000);
   }
   async fillform(){
     await this.page.getByRole('button', { name: ' Clear' }).click();
     await this.page.getByLabel('Trainer/Participant').selectOption('75');
-    await this.page.getByLabel('Training Name').selectOption('213');
+    await this.page.getByLabel('Training Name').selectOption('216');
     await this.page.getByRole('combobox', { name: 'Training Site' }).getByLabel('select').click();
-    await this.page.getByRole('option', { name: 'Bhaktapur Hospital' }).locator('span').click();
+    await this.page.getByRole('option', { name: 'Bharatpur Hospital' }).locator('span').click();
     await this.page.getByRole('combobox', { name: 'Batch Number' }).getByLabel('select').click();
-    await this.page.getByRole('option', { name: '3' }).click();
-    await this.page.getByRole('textbox', { name: 'First Name' }).fill('Celina');
-    await this.page.getByRole('textbox', { name: 'Last Name' }).fill('Celina');
+    await this.page.getByRole('option', { name: '29' }).click();
+    await this.page.getByRole('textbox', { name: 'First Name' }).fill('test');
+    await this.page.getByRole('textbox', { name: 'Last Name' }).fill('test');
     await this.page.getByLabel('Gender').selectOption('3');
     await this.page.getByRole('combobox', { name: 'Date Of Birth(A.D) Date Of' }).fill('12/12/2002');
     await this.page.locator('#trainerAddressProvinceId').selectOption('3');
@@ -54,8 +54,8 @@ class UserregPage {
     await this.page.waitForTimeout(500);
     await this.page.getByRole('option', { name: '26', exact: true }).click();
     await this.page.waitForTimeout(500);
-    await this.page.getByRole('textbox', { name: 'Contact No.' }).fill('133');
-    await this.page.getByRole('textbox', { name: 'Email' }).fill('celina@gmail.com');
+    await this.page.getByRole('textbox', { name: 'Contact No.' }).fill('1334');
+    await this.page.getByRole('textbox', { name: 'Email' }).fill('test@gmail.com');
 
     await this.page.getByLabel('Caste/Ethnicity').selectOption('2567');
     await this.page.getByLabel('Cadre Group').selectOption('1');
@@ -72,10 +72,10 @@ class UserregPage {
     await this.page.getByText('Dental Surgeon').click();
     await this.page.waitForTimeout(1000)
     await this.page.getByRole('textbox', { name: 'Level' }).fill('2');
-    await this.page.getByRole('textbox', { name: 'PIS No' }).fill('22');
-    await this.page.getByRole('textbox', { name: 'Citizenship No.' }).fill('025645');
+    await this.page.getByRole('textbox', { name: 'PIS No' }).fill('2211');
+    await this.page.getByRole('textbox', { name: 'Citizenship No.' }).fill('02564511');
     await this.page.getByLabel('Issue District').selectOption('38');
-    await this.page.getByRole('textbox', { name: 'Council Registration No.' }).fill('9600');
+    await this.page.getByRole('textbox', { name: 'Council Registration No.' }).fill('960011');
 
     await this.page.getByRole('checkbox', { name: 'Would you like to receive' }).check();
     await this.page.getByRole('checkbox', { name: 'Is Dropout?' }).check();
@@ -85,7 +85,7 @@ class UserregPage {
     await this.page.waitForTimeout(2000);
   }
   async viewUserreg(){
-    await this.page.getByRole('row', { name: '+  Actions  Celina Celina ' }).getByRole('button').click();
+    await this.page.getByRole('row', { name: ' Actions  test test 2058/11' }).getByRole('button').click();
     await this.page.getByRole('link', { name: ' View' }).click();
     await this.page.locator("(//button[@class='k-grid-edit k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-icon-button'])[1]").click();
   }

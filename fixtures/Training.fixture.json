@@ -1,0 +1,13 @@
+{
+    "createtraining":{
+        "trainingname":"SBA",
+        "type":"Accredited Training",
+        "version":"1",
+        "sponsor":"Non-government",
+        "status":"Active",
+        "trainingsite":"United Mission Hospital",
+        "batchno":"8",
+        "startdate":"3/8/2025",
+        "enddate":"10/9/2025"
+    }
+}

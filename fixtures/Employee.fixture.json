@@ -1,0 +1,60 @@
+{
+    "createemployee":{
+        "firstname": "test123",
+        "lastname":"test1",
+        "dobAD":"12/12/2002",
+        "dobBS":"2059/08/26"
+    },
+    "servicerecord":{
+        "status":"Active",
+        "recruittype":"Re-Hire",
+        "contachtype":"Bond Contract(New)",
+        "cadregroup":"Nursing",
+        "cadre":"Staff Nurse",
+        "designation":"Senior Anesthesia Assistant",
+        "province":"Bagmati Province",
+        "district":"Kathmandu",
+        "hospitalname":"test",
+        "programtype":"CSSP-MBBS",
+        "department":"MSS",
+        "contractno":"5555",
+        "startdate":"3/4/2025",
+        "enddate":"6/4/2025",
+        "endstatus":"6/2/2025"
+   },
+   "servicerecord1":{
+        "status":"Active",
+        "recruittype":"Re-Hire",
+        "contachtype":"Bond Contract(New)",
+        "cadregroup":"Nursing",
+        "cadre":"Staff Nurse",
+        "designation":"Senior Anesthesia Assistant",
+        "province":"Bagmati Province",
+        "district":"Kathmandu",
+        "hospitalname":"test",
+        "programtype":"CSSP-MBBS",
+        "department":"MSS",
+        "contractno":"23499",
+        "startdate":"8/4/2025",
+        "enddate":"10/4/2027",
+        "endstatus":"10/2/2025"
+   },
+   "servicerecord2":{
+        "status":"Active",
+        "recruittype":"Re-Hire",
+        "contachtype":"Bond Contract(New)",
+        "cadregroup":"Nursing",
+        "cadre":"Staff Nurse",
+        "designation":"Senior Anesthesia Assistant",
+        "province":"Bagmati Province",
+        "district":"Kathmandu",
+        "hospitalname":"test",
+        "programtype":"CSSP-MBBS",
+        "department":"MSS",
+        "contractno":"23499",
+        "startdate":"4/8/2025",
+        "enddate":"4/18/2025",
+        "endstatus":"8/2/2025"
+   }
+   
+}

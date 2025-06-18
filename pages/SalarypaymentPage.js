@@ -50,6 +50,7 @@ class SalarypaymentPage {
 }
 async actionbutton(){
     await this.page.getByRole('row', { name: ' Actions  10 2081/082 (2024' }).getByRole('button').click();
+    await this.page.waitForTimeout(3000)
     await this.page.getByRole('link', { name: 'Export For BMS' }).click()
 }
 

@@ -1,0 +1,30 @@
+{
+    "employeeinsurance":{
+        "insurance":"Accidental Insurance- Surya Insurance",
+        "filtertype":"Contract Start Date",
+        "options":"Is after or equal to",
+        "date":"4/10/2024",
+        "remarks":"test"
+    },
+    "emaildata":{
+        "email":["maharjancelina9@gmail.com","celinam2059@gmail.com"],
+        "subject":"Employee Insurance",
+        "name":"Celina"
+    },
+    "gpa1":{
+        "employeename":["Alfaz Ansari","Amit Kumar Sah","Anish Shrestha","Arjun Bantha","Aruna Chaudhary"],
+        "number":"GPAtest-001",
+        "startdate":"01/10/2024",
+        "enddate":"05/01/2025"
+    },
+    "gpa2":{
+        "employeename":["Ashlesha B.K","Awantika Gautam","Bikash Budathoki","Binod Nepali","Binod Kumar Okheda"],
+        "number":"GPAtest-002",
+        "startdate":"01/10/2024",
+        "enddate":"05/01/2025"
+    },
+    "employeedetail":{
+        "employee1":["Amit Kumar Sah","GPAtest-001"],
+        "employee2":["Binod Nepali","GPAtest-002"]
+    }
+}

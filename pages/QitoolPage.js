@@ -105,7 +105,7 @@ class QitoolPage {
     await this.save.click()
   }
   async edit(Accreditated,Assessment){
-    await this.page.getByRole('row', { name: '+  Actions  Rapti Provincial Hospital' }).getByRole('button').click();
+    await this.page.getByRole('row', { name: ' Actions  Rapti Provincial Hospital' }).getByRole('button').click();
     await this.page.getByRole('link', { name: ' Edit' }).click();
     await this.page.getByRole('combobox', { name: 'Accreditated Date' }).fill(Accreditated);
     await this.page.locator('#SiteDevelopments_AssessmentScoreDate').fill(Assessment);

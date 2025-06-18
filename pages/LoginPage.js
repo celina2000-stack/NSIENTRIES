@@ -22,10 +22,12 @@ class LoginPage {
     await this.password.fill(password);
     await this.page.waitForTimeout(2000);
     await this.loginButton.click(); 
+    await this.page.waitForTimeout(3000);
     await expect(this.page).toHaveURL('https://mnev2qa.exolutus.com/App/TenantDashboard'); 
   }
   async checkUser(user) {
     await expect(this.users).toContainText(user);
+    await this.page.waitForTimeout(4000);
   }
   async logout() {
     await this.users.click();

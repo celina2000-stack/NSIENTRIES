@@ -13,12 +13,12 @@ test('Validating setup User registration', async ({ page }) => {
     await page.screenshot({ path: 'Userreg/'+Date.now()+'.png' });
     await userreg.navigateToUserreg();
     await page.screenshot({ path: 'Userreg/'+Date.now()+'.png' });
-    //await userreg.createUserreg();
+    await userreg.createUserreg();
    
     await userreg.fillform();
     // await loginPage.logout();
     await page.screenshot({ path: 'Userreg/'+Date.now()+'.png' });
-    //await userreg.viewUserreg();
+    await userreg.viewUserreg();
     await page.waitForTimeout(4000);
     
 });

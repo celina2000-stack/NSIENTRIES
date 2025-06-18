@@ -174,32 +174,40 @@ async filterbydate(choice,filtertype,date,options){
   await this.page.waitForTimeout(3000)
   await this.filterbtn.click();
 }
+
 async verify(column, date, condition) {
   const firstColumnTdElements = await this.page.locator(`.modal-body tr td:nth-child(${column})`);
   const tdTexts = await firstColumnTdElements.allTextContents();
-  const thresholdDate = new Date(date);
+  const thresholdDate = new Date(date); // mm/dd/yyyy
 
   for (let index = 0; index < tdTexts.length; index++) {
     const text = tdTexts[index].trim();
+
+    // Handle 'Is null' condition first
+    if (condition === 'Is null') {
+      if (text !== '') {
+        throw new Error(`Row ${index + 1}: Date ${text} is NOT null`);
+      }
+      continue;
+    }
+
     const dateParts = text.split('/');
 
-    // If dateParts is not in dd/mm/yyyy format, log an error and skip this row
     if (dateParts.length !== 3) {
       console.log(`Row ${index + 1}: Invalid date format`);
       continue;
     }
 
-    // Reformat the date from dd/mm/yyyy to yyyy-mm-dd format
+    // Table date is in dd/mm/yyyy, reformat to yyyy-mm-dd
     const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-    const extractedDate = new Date(formattedDate); // Create Date object
+    const extractedDate = new Date(formattedDate);
 
-    // Check if the extracted date is valid
     if (isNaN(extractedDate)) {
       console.log(`Row ${index + 1}: Invalid date`);
       continue;
     }
 
-    // Apply the condition dynamically
+    // Apply the condition
     switch (condition) {
       case 'Is equal to':
         if (extractedDate.getTime() !== thresholdDate.getTime()) {
@@ -215,27 +223,22 @@ async verify(column, date, condition) {
 
       case 'Is before or equal to':
         if (extractedDate > thresholdDate) {
-          throw new Error(`Row ${index + 1}: Date ${text} is NOT before ${date}`);
+          throw new Error(`Row ${index + 1}: Date ${text} is NOT before or equal to ${date}`);
         }
         break;
 
       case 'Is after or equal to':
         if (extractedDate < thresholdDate) {
-          throw new Error(`Row ${index + 1}: Date ${text} is NOT after ${date}`);
-        }
-        break;
-
-      case 'Is null':
-        if (text !== '') {
-          throw new Error(`Row ${index + 1}: Date ${text} is NOT null`);
+          throw new Error(`Row ${index + 1}: Date ${text} is NOT after or equal to ${date}`);
         }
         break;
 
       default:
-        throw new Error(`Row ${index + 1}: Invalid condition ${condition}`);
+        throw new Error(`Row ${index + 1}: Invalid condition "${condition}"`);
     }
   }
 }
+
 
 async filterbydate1(choice,filtertype){
   await this.insurance.selectOption(choice);

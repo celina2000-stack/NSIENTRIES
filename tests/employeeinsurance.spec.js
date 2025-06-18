@@ -17,11 +17,11 @@ test('Validating employee insurance', async ({ page }) => {
     // await employee.export('1');
     // await employee.delete('1');
     //await employee.verifyallchecked('1');
-    // await employee.filterby('Contract Number','1','Ends with','24')
-    // await page.waitForTimeout(3000)
-    // await employee.verifycontent('6','24', 'Ends with')
-    await employee.filterbydate1('1','Contract End Date')
-    await employee.verify1('8')
+    await employee.filterby('Contract Number','1','Ends with','24')
+    await page.waitForTimeout(3000)
+    await employee.verifycontent('4','24', 'Ends with')
+    // await employee.filterbydate1('1','Contract End Date')
+    // await employee.verify1('8')
     // await page.waitForTimeout(3000)
     // await employee.verify('8','2025-06-30', 'Is after or equal to')
     //await employee.filter('1','4');

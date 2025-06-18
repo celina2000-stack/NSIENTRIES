@@ -51,7 +51,7 @@ class VenuePage {
     
     await this.page.getByRole('button', { name: ' Program Affiliation Date' }).click();
     await this.page.getByRole('combobox', { name: 'Affiliation Start Date' }).fill('04/07/2026');
-    await this.page.getByRole('gridcell', { name: '/07/2025' }).click();
+    await this.page.getByRole('gridcell', { name: '/28/2025' }).click();
     await this.page.getByRole('combobox', { name: 'Affiliation End Date' }).fill('4/8/2026');
     await this.page.getByRole('button', { name: 'Add' }).click();
     await this.page.waitForTimeout(500)

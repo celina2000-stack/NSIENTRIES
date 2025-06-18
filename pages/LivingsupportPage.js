@@ -73,8 +73,9 @@ class LivingsupportPage {
     await this.page.waitForTimeout(2000)
     await this.create.click();
     await this.page.locator('#FiscalYearId').selectOption('23');
-    await this.page.waitForTimeout(1000)
+    await this.page.waitForTimeout(3000)
     await this.page.locator('.k-input-value-text').first().click()
+    await this.page.waitForTimeout(5000)
     const listItems = await this.page.locator('//*[@id="TrainingSiteId_listbox"]/li').allTextContents();
     await expect(listItems).toContain(name);
     await this.page.locator("(//button[normalize-space()='Close'])[1]").click(); 
@@ -90,6 +91,7 @@ class LivingsupportPage {
     await this.page.locator('#FiscalYearId').selectOption('23');
     await this.page.waitForTimeout(1000)
     await this.page.locator('.k-input-value-text').first().click()
+    await this.page.waitForTimeout(5000)
     const listItems = await this.page.locator('//*[@id="TrainingSiteId_listbox"]/li').allTextContents();
     await expect(listItems).toContain(name)
     await this.page.locator("(//button[normalize-space()='Close'])[1]").click(); 

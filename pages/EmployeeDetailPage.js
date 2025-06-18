@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { statSync } from "fs";
 
 class EmployeeDetailPage {
   constructor(page) {
@@ -15,6 +16,7 @@ class EmployeeDetailPage {
     this.submitbutton = page.getByRole('button', { name: 'Submit' });
     this.editbutton = page.getByRole('link', { name: ' Edit' });
     this.deletebutton = page.getByRole('link', { name: ' Delete' });
+     this.servicerecodrs='//*[@id="kt_wizard_v3"]/div[1]/div/div[7]/div/h5[2]'
   }
 
   async navigateToemployedetail() {
@@ -120,6 +122,7 @@ class EmployeeDetailPage {
     await this.page.getByRole('combobox', { name: 'Department' }).locator('span').first().click();
     await this.page.getByRole('option', { name: 'MSS' }).click();
     await this.page.getByRole('textbox', { name: 'Contract Number' }).fill('55550');
+    await this.page.getByRole('combobox', { name: 'Start Date' }).fill('3/4/2025');
     await this.page.getByRole('combobox', { name: 'End Date' }).fill('3/4/2026');
     await this.page.getByRole('combobox', { name: 'End Date' }).press('Enter');
   }
@@ -203,6 +206,60 @@ class EmployeeDetailPage {
     await this.page.getByRole('button', { name: ' Actions ' }).click();
     await this.page.getByRole('link', { name: 'Delete' }).first().click();
     await this.page.getByRole('button', { name: 'Yes' }).click();
+  }
+  //// second test for service record
+  async gotoservicerecords() {
+    await this.page.waitForTimeout(2000);
+    await this.page.locator(this.servicerecodrs).click();
+    await this.page.waitForTimeout(2000);
+  }
+  async fillservice(recruittype, contracttype, cadregroup, cadre, designation, province, district,hospitalname, Programtype, department, contractnumber,startdate,enddate,endstatus) {
+    await this.create.click();
+    await this.page.getByLabel('RecruitType').selectOption({label:recruittype});
+    await this.page.getByLabel('Contract Type', { exact: true }).selectOption({label:contracttype});
+    
+    await this.page.getByLabel('Cadre Group').selectOption({label:cadregroup});
+    await this.page.waitForTimeout(2000)
+    await this.page.getByRole('combobox', { name: 'Cadre', exact: true }).locator('span').first().click();
+    await this.page.getByRole('option', { name: cadre, exact: true }).click();
+    await this.page.getByRole('combobox', { name: 'Designation' }).getByLabel('select').click();
+    await this.page.getByRole('option', { name: designation }).locator('span').click();
+    await this.page.locator('#ServiceProvinceID').selectOption({label: province});
+    await this.page.locator('//*[@id="EmployeeServiceDetailInformationsTab"]/form/div[1]/div[7]/div/span[2]/span[2]').click();
+    await this.page.getByRole('option', { name: district }).locator('span').click();
+    await this.page.locator('//*[@id="EmployeeServiceDetailInformationsTab"]/form/div[1]/div[8]/span[2]/span[2]').click();
+    await this.page.getByRole('option', { name: hospitalname}).locator('span').click();
+    await this.page.getByRole('combobox', { name: 'Program Type' }).locator('span').nth(1).click();
+    await this.page.getByRole('option', { name: Programtype }).locator('span').click();
+    await this.page.getByRole('combobox', { name: 'Department' }).locator('span').first().click();
+    await this.page.getByRole('option', { name: department }).click();
+    await this.page.getByRole('textbox', { name: 'Contract Number' }).fill(contractnumber);
+    await this.page.getByRole('combobox', { name: 'Start Date' }).fill(startdate);
+    await this.page.getByRole('combobox', { name: 'End Date' }).fill(enddate);
+    await this.page.locator('#configChoiceServiceEndContractStatusId').selectOption('448');
+    await this.page.getByRole('combobox', { name: 'End Contract Status Date' }).fill(endstatus);
+    await this.savebutton.click();
+    await this.page.waitForTimeout(3000);
+  }
+  async verifyactivestatus(){
+    const errormessage="Status Already Active";
+    await expect(this.page.locator("//body")).toContainText(errormessage);
+  }
+  async verify30dayserror(){
+    const errormessage="Contract must be at least 30 Days";
+    await expect(this.page.locator("//body")).toContainText(errormessage);
+  }
+  async verifyalreadyexist(){
+    const errormessage="Service Record alredy exist in this date.";
+    await expect(this.page.locator("//body")).toContainText(errormessage);
+  }
+  async verifycontractdate(){
+    const errormessage="Contract Start or End Date is not between the Affiliation Start or End Date";
+    await expect(this.page.locator("//body")).toContainText(errormessage);
+  }
+  async verifystatus(status){
+    const statuscolumn='//*[@id="EmployeeServiceDetailsTable"]/tbody/tr[1]/td[3]';
+    await expect(this.page.locator(statuscolumn)).toHaveText(status);
   }
 }
 
